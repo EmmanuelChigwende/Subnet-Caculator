@@ -2,8 +2,17 @@ import React from "react";
 import toast from "react-hot-toast";
 
 const Home = () => {
+  //  i know how to do this on paper lol
+
+  const PrefixLenght = 20
+  
+  async function IntrestingOctet(PrefixLenght) {
+    const intrest = PrefixLenght % 8
+    console.log(intrest)
+  }
+
   return (
-    <div className=" h-[500px] w-[400px] rounded-xl p-2">
+    <div   className=" h-[500px] w-[400px] rounded-xl p-2">
       <div>
         <h1 className="text-white text-[2rem] font-extrabold">
           Subnet Caculator
@@ -29,7 +38,7 @@ const Home = () => {
           />
         </div>
       </div>
-      <button className="w-full bg-[#0ea5e9] mt-10 h-[50px] rounded-[10px] text-white text-[1.5rem] font-extrabold">
+      <button onClick={IntrestingOctet} className="w-full bg-[#0ea5e9] mt-10 h-[50px] rounded-[10px] text-white text-[1.5rem] font-extrabold">
         Caculate
       </button>
     </div>
