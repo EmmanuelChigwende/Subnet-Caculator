@@ -7,19 +7,26 @@ const Home = () => {
   const [ipAddress, setIpAddress] = useState(null);
   const [prefix, setPrefix] = useState(null);
 
-  //  i know how to do this on paper lol
+  // okay so first its input validation
 
   function CheckValues() {
     if (ipAddress == null || prefix == null) {
       toast.error("Please fill in all feilds");
     } else {
-      if(prefix < 0 || prefix > 32 ){
-        toast.error("please correct prefix value")
+      if (prefix < 0 || prefix > 32) {
+        toast.error("please correct prefix value");
+      } else {
+        if (ipAddress == "") {
+          toast.error("Please input valid ipaddress");
+        } else {
+          const parts = ipAddress.split(".");
+          for (const part of parts) {
+            if(part < 0 || part > 255){
+              toast.error("invalid ip address")
+            }
+          }
+        }
       }
-      else if(ipAddress != "" ){
-        toast.error("Please input correect ipaddress syntax")
-      }
-      toast.success(ipAddress,prefix);
     }
   }
 
