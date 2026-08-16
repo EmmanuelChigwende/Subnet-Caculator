@@ -13,6 +13,12 @@ const Home = () => {
     if (ipAddress == null || prefix == null) {
       toast.error("Please fill in all feilds");
     } else {
+      if(prefix < 0 || prefix > 32 ){
+        toast.error("please correct prefix value")
+      }
+      else if(ipAddress != "" ){
+        toast.error("Please input correect ipaddress syntax")
+      }
       toast.success(ipAddress,prefix);
     }
   }
@@ -42,7 +48,7 @@ const Home = () => {
         <div className="flex items-center gap-2">
           <p className="text-[#94a3b8] items-center justify-center pt-3">\</p>
           <input
-            type="text"
+            type="number"
             name="prefix"
             value={prefix}
             onChange={(e) => setPrefix(e.target.value)}
