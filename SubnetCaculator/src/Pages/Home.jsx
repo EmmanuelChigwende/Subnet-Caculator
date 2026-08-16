@@ -4,11 +4,18 @@ import { useState } from "react";
 
 const Home = () => {
   // Handles the valuses put in by the user
-  const [ipAddress, setIpAddress] = useState();
-  const [prefix, setPrefix] = useState();
+  const [ipAddress, setIpAddress] = useState(null);
+  const [prefix, setPrefix] = useState(null);
 
   //  i know how to do this on paper lol
-  
+
+  function CheckValues() {
+    if (ipAddress == null || prefix == null) {
+      toast.error("Please fill in all feilds");
+    } else {
+      toast.success(ipAddress,prefix);
+    }
+  }
 
   return (
     <div className=" h-[500px] w-[400px] rounded-xl p-2">
@@ -43,7 +50,10 @@ const Home = () => {
           />
         </div>
       </div>
-      <button className="w-full bg-[#0ea5e9] mt-10 h-[50px] rounded-[10px] text-white text-[1.5rem] font-extrabold">
+      <button
+        onClick={CheckValues}
+        className="w-full bg-[#0ea5e9] mt-10 h-[50px] rounded-[10px] text-white text-[1.5rem] font-extrabold"
+      >
         Caculate
       </button>
     </div>
