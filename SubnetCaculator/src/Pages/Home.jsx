@@ -21,8 +21,12 @@ const Home = () => {
         } else {
           const parts = ipAddress.split(".");
           for (const part of parts) {
-            if(part < 0 || part > 255){
-              toast.error("invalid ip address")
+            if (typeof part != 'number') {
+              toast.error("invalid ip address");
+            } else {
+              if (part < 0 || part > 255) {
+                return toast.error("invalid ip address");
+              }
             }
           }
         }
