@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 
 import CheckValues from "../utils/Validation";
+import { prefixToMask } from "../utils/Caculaton";
 
 const Home = () => {
   // Handles the valuses put in by the user
@@ -12,6 +13,7 @@ const Home = () => {
   // okay so first its input validation
   function CaculateSubnet(){
     const ValidatedUserInput = CheckValues(ipAddress,prefix)
+    prefixToMask(ValidatedUserInput.prefix)
   }
   
   return (
