@@ -2,38 +2,18 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useState } from "react";
 
+import CheckValues from "../utils/Validation";
+
 const Home = () => {
   // Handles the valuses put in by the user
   const [ipAddress, setIpAddress] = useState(null);
   const [prefix, setPrefix] = useState(null);
 
   // okay so first its input validation
-
-  function CheckValues() {
-    if (ipAddress == null || prefix == null) {
-      toast.error("Please fill in all feilds");
-    } else {
-      if (prefix < 0 || prefix > 32) {
-        toast.error("please correct prefix value");
-      } else {
-        if (ipAddress == "") {
-          toast.error("Please input valid ipaddress");
-        } else {
-          const parts = ipAddress.split(".");
-          for (const part of parts) {
-            if (typeof part != 'number') {
-              toast.error("invalid ip address");
-            } else {
-              if (part < 0 || part > 255) {
-                return toast.error("invalid ip address");
-              }
-            }
-          }
-        }
-      }
-    }
+  function CaculateSubnet(){
+    const ValidatedUserInput = CheckValues(ipAddress,prefix)
   }
-
+  
   return (
     <div className=" h-[500px] w-[400px] rounded-xl p-2">
       <div>
@@ -68,7 +48,7 @@ const Home = () => {
         </div>
       </div>
       <button
-        onClick={CheckValues}
+        onClick={CaculateSubnet}
         className="w-full bg-[#0ea5e9] mt-10 h-[50px] rounded-[10px] text-white text-[1.5rem] font-extrabold"
       >
         Caculate
