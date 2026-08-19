@@ -6,7 +6,7 @@ function prefixToMask(prefix){
     // okay on pem and paper its easy but like how tf do i do it here
     const Fulloctets = Math.floor(prefix/8)
     const LeftOverOctets = prefix % 8
-    
+    // bro honestly im stuck wtf am i even doing here 
 }
 
 export  {prefixToMask}
