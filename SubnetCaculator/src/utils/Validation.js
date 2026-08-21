@@ -5,7 +5,7 @@ function CheckValues(ipAddress,prefix) {
       toast.error("Please fill in all feilds");
     } else {
       if (prefix < 0 || prefix > 32) {
-        toast.error("please correct prefix value");
+        toast.error("please correct prefix value : Value is out of range");
       } else {
         if (ipAddress == "") {
           toast.error("Please input valid ip address");

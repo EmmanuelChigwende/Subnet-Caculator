@@ -10,14 +10,16 @@ const Home = () => {
   const [ipAddress, setIpAddress] = useState(null);
   const [prefix, setPrefix] = useState(null);
 
+
   // okay so first its input validation
-  function CaculateSubnet(){
-    const ValidatedUserInput = CheckValues(ipAddress,prefix)
-    prefixToMask(ValidatedUserInput.prefix)
+  function CaculateSubnet() {
+    const ValidatedUserInput = CheckValues(ipAddress, prefix);
+    toast.success(ValidatedUserInput.ipParts)
+    prefixToMask(ValidatedUserInput.prefix);
   }
-  
+
   return (
-    <div className=" h-[500px] w-[400px] rounded-xl p-2">
+    <div className=" h-full w-[400px] rounded-xl p-2 bg-[#020617]">
       <div>
         <h1 className="text-white text-[2rem] font-extrabold">
           Subnet Caculator
@@ -51,10 +53,26 @@ const Home = () => {
       </div>
       <button
         onClick={CaculateSubnet}
-        className="w-full bg-[#0ea5e9] mt-10 h-[50px] rounded-[10px] text-white text-[1.5rem] font-extrabold"
+        className="w-full bg-[#5fc4f3] hover:bg-[#31a1d4] mt-10 h-[50px] rounded-[10px] text-white text-[1.5rem] font-extrabold"
       >
         Caculate
       </button>
+
+      {/* Output displays here */}
+
+      <div className="h-[225px] w-[400px] mt-[30px] p-2 rounded-[15px] bg-[#334155]">
+        <ul className="text-[1.2rem] pl-1 text-white grid-cols-1 space-y-2 gap-2">
+          <li>Network Address: </li>
+          <li>Broadcast Address: </li>
+          <li>Subnet Mask: </li>
+          <li>IP address range: </li>
+        </ul>
+        <div className="mt-[10px]">
+          <h1 className="w-full text-[1.5rem] text-white font-extrabold text-center flex items-center justify-center bg-[#5fc4f3]  hover:bg-[#31a1d4] h-[50px] rounded-[10px]">
+            How i work
+          </h1>
+        </div>
+      </div>
     </div>
   );
 };

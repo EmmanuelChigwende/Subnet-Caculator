@@ -7,6 +7,11 @@ function prefixToMask(prefix){
     const Fulloctets = Math.floor(prefix/8)
     const LeftOverOctets = prefix % 8
     // bro honestly im stuck wtf am i even doing here 
+    // bro wtf is subnetting fr
+
+    // bro wtf is this formula like who comes up with these
+    const SubnetMask = prefix ===  0 ? 0 :(0xFFFFFFFF << (32 -prefix)) >>> 0
+    console.log(SubnetMask)
 }
 
 export  {prefixToMask}
