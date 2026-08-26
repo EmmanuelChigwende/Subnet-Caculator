@@ -3,22 +3,28 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 
 import CheckValues from "../utils/Validation";
-import { prefixToMask } from "../utils/Caculaton";
+import { prefixToMask, CaculateMagicNumber } from "../utils/Caculaton";
 
 const Home = () => {
-  // Handles the valuses put in by the user
+  // Handles the values put in by the user
   const [ipAddress, setIpAddress] = useState(null);
   const [prefix, setPrefix] = useState(null);
 
-  const [CaculatedSubnetMask,setCaculatedSubnetMask] = useState(null)
+  const [CaculatedSubnetMask, setCaculatedSubnetMask] = useState(null);
+  const [NetworkIpAddress, setNetworkIpAddress] = useState(null);
 
   // okay so first its input validation
   function CaculateSubnet() {
+    // i noticed if you dont clear results it just stays there
+    
+
     const ValidatedUserInput = CheckValues(ipAddress, prefix);
-    toast.success(ValidatedUserInput.ipParts)
     const Subnetmask = prefixToMask(ValidatedUserInput.prefix);
-    toast.success(Subnetmask)
-    setCaculatedSubnetMask(Subnetmask)
+    setCaculatedSubnetMask(Subnetmask);
+
+    // Caculating network address
+    const NetworkAddress = CaculateMagicNumber();
+    setNetworkIpAddress(NetworkAddress);
   }
 
   return (
@@ -65,9 +71,9 @@ const Home = () => {
 
       <div className="h-[225px] w-[400px] mt-[30px] p-2 rounded-[15px] bg-[#334155]">
         <ul className="text-[1.2rem] pl-1 text-white grid-cols-1 space-y-2 gap-2">
-          <li>Network Address: </li>
+          <li>Network Address: {NetworkIpAddress} </li>
           <li>Broadcast Address: </li>
-          <li>Subnet Mask: {CaculatedSubnetMask}  </li>
+          <li>Subnet Mask: {CaculatedSubnetMask} </li>
           <li>IP address range: </li>
         </ul>
         <div className="mt-[10px]">
