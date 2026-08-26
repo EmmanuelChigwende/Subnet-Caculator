@@ -10,6 +10,7 @@ const Home = () => {
   const [ipAddress, setIpAddress] = useState(null);
   const [prefix, setPrefix] = useState(null);
 
+  const [CaculatedSubnetMask,setCaculatedSubnetMask] = useState(null)
 
   // okay so first its input validation
   function CaculateSubnet() {
@@ -17,6 +18,7 @@ const Home = () => {
     toast.success(ValidatedUserInput.ipParts)
     const Subnetmask = prefixToMask(ValidatedUserInput.prefix);
     toast.success(Subnetmask)
+    setCaculatedSubnetMask(Subnetmask)
   }
 
   return (
@@ -65,7 +67,7 @@ const Home = () => {
         <ul className="text-[1.2rem] pl-1 text-white grid-cols-1 space-y-2 gap-2">
           <li>Network Address: </li>
           <li>Broadcast Address: </li>
-          <li>Subnet Mask: </li>
+          <li>Subnet Mask: {CaculatedSubnetMask}  </li>
           <li>IP address range: </li>
         </ul>
         <div className="mt-[10px]">
