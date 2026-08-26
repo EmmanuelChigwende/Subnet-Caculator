@@ -23,8 +23,8 @@ const Home = () => {
     setCaculatedSubnetMask(Subnetmask);
 
     // Caculating network address
-    const NetworkAddress = CaculateMagicNumber();
-    setNetworkIpAddress(NetworkAddress);
+    const NetworkAddress = CaculateMagicNumber(ValidatedUserInput.ipParts);
+    setNetworkIpAddress(NetworkAddress.join('.'));
   }
 
   return (
