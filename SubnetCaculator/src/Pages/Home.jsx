@@ -15,7 +15,8 @@ const Home = () => {
   function CaculateSubnet() {
     const ValidatedUserInput = CheckValues(ipAddress, prefix);
     toast.success(ValidatedUserInput.ipParts)
-    prefixToMask(ValidatedUserInput.prefix);
+    const Subnetmask = prefixToMask(ValidatedUserInput.prefix);
+    toast.success(Subnetmask)
   }
 
   return (
