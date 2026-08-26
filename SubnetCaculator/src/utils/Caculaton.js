@@ -34,7 +34,7 @@ function CaculateMagicNumber(ipaddress) {
   const magicNumber = 256 - intrestingOctetValue
   
     for(let i = 0; i < 4 ; i++){
-        if(i == intrestingOctetPosition){
+        if(i === intrestingOctetPosition){
             const intrestingIpAddressOctet = ipaddress[i]
             console.log(intrestingIpAddressOctet)
             const value = Math.floor(intrestingIpAddressOctet/magicNumber)* magicNumber
