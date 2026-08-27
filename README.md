@@ -2,6 +2,9 @@
 
 A simple React app that calculates IPv4 subnet details from an IP address and CIDR prefix length. Built as a hands-on way to practice both React and the subnetting concepts covered in CCNA study (magic number method, host ranges).
 
+<img width="1913" height="858" alt="image" src="https://github.com/user-attachments/assets/9e945486-d6cd-44ca-851f-454e29408275" />
+
+
 ## What it does
 
 Enter an IP address and a prefix length (e.g. `192.168.1.0` / `24`) and get back:
