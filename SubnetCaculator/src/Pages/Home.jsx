@@ -12,6 +12,7 @@ const Home = () => {
 
   const [CaculatedSubnetMask, setCaculatedSubnetMask] = useState(null);
   const [NetworkIpAddress, setNetworkIpAddress] = useState(null);
+  const [BroadcastIpaddress,setBroadcastIpAaddress] = useState(null)
 
   // okay so first its input validation
   function CaculateSubnet() {
@@ -24,7 +25,8 @@ const Home = () => {
 
     // Caculating network address
     const NetworkAddress = CaculateMagicNumber(ValidatedUserInput.ipParts);
-    setNetworkIpAddress(NetworkAddress.join('.'));
+    setNetworkIpAddress(NetworkAddress[0].join('.'));
+    setBroadcastIpAaddress(NetworkAddress[1].join('.'))
   }
 
   return (
@@ -72,7 +74,7 @@ const Home = () => {
       <div className="h-[225px] w-[400px] mt-[30px] p-2 rounded-[15px] bg-[#334155]">
         <ul className="text-[1.2rem] pl-1 text-white grid-cols-1 space-y-2 gap-2">
           <li>Network Address: {NetworkIpAddress} </li>
-          <li>Broadcast Address: </li>
+          <li>Broadcast Address: {BroadcastIpaddress}</li>
           <li>Subnet Mask: {CaculatedSubnetMask} </li>
           <li>IP address range: </li>
         </ul>

@@ -32,20 +32,32 @@ function prefixToMask(prefix) {
 
 function CaculateMagicNumber(ipaddress) {
   const magicNumber = 256 - intrestingOctetValue
+  let broadcastAddress = 0
+  let broadcastAddressValue = 0
+  let Networkaddress = ipaddress
+  const NetworkParts = []
   
     for(let i = 0; i < 4 ; i++){
         if(i === intrestingOctetPosition){
-            const intrestingIpAddressOctet = ipaddress[i]
+            const intrestingIpAddressOctet = Networkaddress[i]
             console.log(intrestingIpAddressOctet)
             const value = Math.floor(intrestingIpAddressOctet/magicNumber)* magicNumber
-            ipaddress[i] = value
-            console.log(ipaddress)
+            Networkaddress[i] = value
 
+            broadcastAddressValue = (value + magicNumber) - 1
+
+            NetworkParts.push(Networkaddress)
+            
+            broadcastAddress = Networkaddress
+            broadcastAddress[i] = broadcastAddressValue
+
+            NetworkParts.push(broadcastAddress)
+            console.log(NetworkParts)
         }
     }
 
 
-  return ipaddress
+  return NetworkParts
 }
 
 
